@@ -11,31 +11,33 @@ const changeModalState = (state) => {
 
     function bindActionToElems (event, elem, prop) {
         elem.forEach((item, i) => {
-            item.addEventListener(event, () => {
-                switch(item.nodeName) {
-                    case 'SPAN':
-                        state[prop] = i;
-                        break;
-                    case 'INPUT' :
-                        if(item.getAttribute('type') === 'checkbox') {
-                            i === 0 ? state[prop] = 'Холодное' : state[prop] = 'Теплое';
-                            elem.forEach((box, k )=> {
-                                box.checked = false;
-                                if (i == k) {
-                                    box.checked = true;
-                                }
-                            } )
-                        } else {
-                           state[prop] = item.value;
-                        }
-                        break;
-                    case 'SELECT' :
-                        state[prop] = item.value;
-                        break;
-                }
-
-                console.log(state);
-           });
+        
+          item.addEventListener(event, () => { 
+            switch(item.nodeName) {
+                        case 'SPAN':
+                            state[prop] = i;
+                            break;
+                        case 'INPUT' :
+                            if(item.getAttribute('type') === 'checkbox') {
+                                i === 0 ? state[prop] = 'Холодное' : state[prop] = 'Теплое';
+                                elem.forEach((box, k )=> {
+                                    box.checked = false;
+                                    if (i == k) {
+                                        box.checked = true;
+                                    }
+                                } )
+                            } else {
+                               state[prop] = item.value;
+                            }
+                            break;
+                        case 'SELECT' :
+                            state[prop] = item.value;
+                            break;
+                    }
+    
+                    console.log(state);
+               });
+        
         });
 
         
