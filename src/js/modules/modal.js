@@ -40,6 +40,7 @@ function modal() {
    modal.addEventListener('click', (e) => {
     if(e.target === modal && closeClickOverLay) {
         modal.style.display = 'none';
+        document.body.style.overflow = '';
         document.body.style.marginRight = `0px`;
         // document.body.classList.remove('modal-open')
     }
